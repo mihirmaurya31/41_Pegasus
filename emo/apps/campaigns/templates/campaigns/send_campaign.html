@@ -22,7 +22,7 @@
     </p>
     <form method="post" class="mb-2">
       {% csrf_token %}
-      <button class="btn btn-success btn-lg" type="submit" role="button">{% trans 'Send campaign' %}</button>
+      <button href="send_campaign" class="btn btn-success btn-lg" type="submit" role="button">{% trans 'Send campaign' %}</button>
     </form>
     <a class="btn btn-link" href="{{ campaign.get_absolute_url }}" role="button">{% trans "Wait, I'm not ready" %}</a>
   </div>

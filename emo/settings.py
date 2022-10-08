@@ -154,20 +154,37 @@ EMAIL_SUBJECT_PREFIX = '[Colossus] '
 
 SERVER_EMAIL = config('SERVER_EMAIL', default='root@localhost')
 
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='webmaster@localhost')
+DEFAULT_FROM_EMAIL = config('nisarsasin123@gmail.com', default='webmaster@localhost')
 
-EMAIL_BACKEND = config('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+EMAIL_BACKEND = config('django.core.mail.backends.smtp.EmailBackend', default='django.core.mail.backends.smtp.EmailBackend')
 
-EMAIL_HOST = config('EMAIL_HOST', default='localhost')
+EMAIL_HOST = config('smtp.mailgun.org', default='localhost')
 
-EMAIL_PORT = config('EMAIL_PORT', default=587, cast=int)
+EMAIL_PORT = config('587', default='587', cast=int)
 
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='root')
+EMAIL_HOST_USER = config('postmaster@sandboxaddae8d24cb64b86b9a42d82f2ba8299.mailgun.org', default='root')
 
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+EMAIL_HOST_PASSWORD = config('fedd9ffe61697a1406e88556cb034f12-381f2624-16cfb093', default='')
 
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=True, cast=bool)
+EMAIL_USE_TLS = config('False', default=False, cast=bool)
 
+
+
+'''MAIL_DRIVER='smtp'
+MAIL_HOST='smtp.yandex.com'
+MAIL_PORT='465'
+MAIL_USERNAME='d3v-contact'
+MAIL_PASSWORD='dvuyrwoepmiqcydd'
+MAIL_ENCRYPTION='ssl'
+MAIL_FROM_ADDRESS='d3v-contact@yandex.com'
+MAIL_FROM_NAME='Support'''
+
+'''MAIL_HOST='smtp.sendgrid.net'
+MAIL_PORT='465'
+MAIL_USERNAME='apikey'
+MAIL_PASSWORD='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'
+MAIL_FROM_ADDRESS='sasinnisarga123@gmail.com'
+MAIL_FROM_NAME='Sasin'''
 
 # ==============================================================================
 # AUTHENTICATION AND AUTHORIZATION SETTINGS
@@ -241,6 +258,6 @@ CELERY_TASK_ALWAYS_EAGER = config('CELERY_TASK_ALWAYS_EAGER', default=True, cast
 
 COLOSSUS_HTTPS_ONLY = config('COLOSSUS_HTTPS_ONLY', default=False, cast=bool)
 
-MAILGUN_API_KEY = config('MAILGUN_API_KEY', default='')
+MAILGUN_API_KEY = config('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', default='')
 
-MAILGUN_API_BASE_URL = config('MAILGUN_API_BASE_URL', default='')
+MAILGUN_API_BASE_URL = config('https://api.mailgun.net/v3/sandboxaddae8d24cb64b86b9a42d82f2ba8299.mailgun.org/', default='')
