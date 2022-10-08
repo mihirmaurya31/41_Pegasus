@@ -70,7 +70,7 @@ class SubscriptionsSummaryChart(Chart):
         series = OrderedDict()
         for i in range(30):
             date = timezone.localdate(timezone.now()) - timezone.timedelta(i)
-            key = date.strftime('%-d %b, %y')
+            key = date.strftime('%d %b, %y')
             series[key] = {'sub': 0, 'unsub': 0, 'order': i}
 
         # Now we are replacing the existing entries with actual counts

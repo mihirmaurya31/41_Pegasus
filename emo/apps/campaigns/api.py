@@ -31,7 +31,6 @@ def get_test_email_context(**kwargs):
 def send_campaign_email(email, context, to, connection=None, is_test=False):
     if isinstance(to, str):
         to = [to, ]
-
     subject = email.subject
     if is_test:
         subject = '[%s] %s' % (_('Test'), subject)
@@ -41,7 +40,6 @@ def send_campaign_email(email, context, to, connection=None, is_test=False):
 
     # Remove track open from plain text version
     plain_text_message = re.sub(r'(!\[\]\(https?://.*/track/open/.*/\)\n\n)', '', plain_text_message, 1)
-
     headers = dict()
     if not is_test:
         headers['List-ID'] = '%s <%s.list-id.%s>' % (
@@ -74,7 +72,10 @@ def send_campaign_email(email, context, to, connection=None, is_test=False):
     message.attach_alternative(rich_text_message, 'text/html')
 
     try:
-        message.send(fail_silently=False)
+        message.send()
+        print("*"*80)
+        print("failed because ")
+        print("*"*80)
         return True
     except SMTPException:
         logger.exception('Could not send email "%s" due to SMTP error.' % email.uuid)
@@ -112,6 +113,9 @@ def send_campaign_email_test(email, recipient_list):
 
 
 def send_campaign(campaign):
+    print("*"*80)
+    print("failed because ")
+    print("*"*80)
     campaign.status = CampaignStatus.DELIVERING
     campaign.save(update_fields=['status'])
     site = get_current_site(request=None)  # get site based on SITE_ID
